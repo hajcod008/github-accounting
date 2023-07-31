@@ -41,7 +41,9 @@ async function login(req, res) {
             username: req.body.username,
             password: req.body.password  
         }
+        //console.log(inputData);
         await validate(inputData, loginSchema)
+        console.log('44444444444444444 :>> ', req.body);
         let result = await bl.login(inputData);
         res.status(200).send(result);
     } catch (err) {

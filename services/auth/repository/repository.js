@@ -10,15 +10,11 @@
   try {
 console.log(inputData);
 let insertQuery =`insert into users1(id, username, password,insert_date)
-   values(${4},'${inputData.username}','${inputData.password}',${inputData.insertDate})`
+   values(${3},'${inputData.username}','${inputData.password}',${inputData.insertDate})`
    console.log(insertQuery);
    const result = await client.query(insertQuery);
 
-
-console.log(result.rows);
-
-console.log(result.rowsCount);
-client.end();
+   const user = result.rows[0];
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'internal server error'})
@@ -27,18 +23,31 @@ client.end()
  }
  
 
-//* get user for database
+//* get user for databases
 
-async function findUser(query) {
+const findUser = async(inputData) =>{ 
   try {
-    console.log(query);
-      const user =  await client.query(  `SELECT * FROM users1 WHERE = 'username' `,[username]).findOne(query, { projection: { _id: 4 } });
-      return user;
-  } catch (err) {
-      throw {
-          status: 400,
-          message: err.message,
+    console.log(user);
+    const user = ({username: inputData.username})
+    if(!user){
+      throw{
+        massage:'user not found',
+        status:404
+
       }
+    }
+    console.log('3333333333333333333333333 :>> ', `SELECT username FROM users1 where username = ${inputData.username}`);
+    client.query(`SELECT username FROM users1 where username = ${inputData.username}`, (err,result)=>{
+      if(err) console.log('1111111111111 :>> ', err);
+      else{
+        console.log('22222222222222 :>> ', result);
+      }
+    })
+  } catch (err) {
+    let statusCode = err.status || 400;
+    throw{
+      status: statusCode,
+    }
   }
 }
 
@@ -49,24 +58,19 @@ async function findUser(query) {
 
 
 
+    // console.log(inputData);
+    // const result = await client.query(`SELECT * FROM users1 WHERE username = ${inputData.params.username}`)
+    // if (result.rows.length === 0) {
+    //   return res.status(401).send('Invalid username or password');
+    //  }
+    // const users = result.rows[0];
+    // return{ 
+    //   status:200,
+    //   result:{
+    //     user
+    //   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   
 
 
 

@@ -27,6 +27,7 @@ async function register(inputData){
 //* Comparison username and password and token
 const login = async(inputData) => {
     try {
+        console.log(userData);
         const userData = await repository.findUser({username: inputData.username});
         if (!userData) {
             throw{
@@ -56,7 +57,7 @@ const login = async(inputData) => {
                 status:400
             }
         }
-    } catch (err) {
+    } catch (err) { 
         let statusCode = err.status || 400;
         throw{
             status: statusCode,
