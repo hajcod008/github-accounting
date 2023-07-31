@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const client = require('./utils/initializer');
-const dotenv = require('dotenv').config({ path: __dirname + '/.env' });
+const client = require('./config/initializer');
+const dotEnv = require("dotenv");
+dotEnv.config({ path: "./config/config.env" });
 const app = express();
 const morgan = require('morgan');
 const fs = require('fs');
@@ -20,7 +21,7 @@ app.use(cors());
 
 //* Management ruter
 serviceNames.forEach(serviceName => {
-    const service = require(`./services/${serviceName}/routes.js`)
+    const service = require(`./routes/routes.js`)
 
     app.use('/api', service)
 });
@@ -28,14 +29,14 @@ serviceNames.forEach(serviceName => {
 
 //*env
 
-if (dotenv.error) {
-    throw dotenv.error;
-}
+// if (dotenv.error) {
+//     throw dotenv.error;
+// }
 
 
 
 //*connect to database
-client.connect();
+// client.connect();
 
 
 

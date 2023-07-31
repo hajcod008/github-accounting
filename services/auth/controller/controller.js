@@ -1,6 +1,6 @@
 const bl = require('../businesslogic/bl');
 const uuid = require('uuid');
-const { registerSchema, loginSchema } = require('../../../utils/schema');
+const { registerSchema, loginSchema } = require('../../../models/schema.js');
 const {validate } =require('../../../utils/validator');
 const bcrypt = require('bcryptjs');
 const repository = require('../../../config/initializer');

@@ -1,24 +1,26 @@
 const { Client } = require('pg');
 
+const dotEnv = require("dotenv");
 
-require('dotenv').config();
-// const bcrypt = require('bcryptjs');
+dotEnv.config({ path: "./config/config.env" });
 
+const config = {
 
-const client = new Client({
     user: process.env.DB_USER,
+
     host: process.env.DB_HOST,
+
     database: process.env.DB_NAME,
+
     password: process.env.DB_PASSWORD,
+
     port: process.env.DB_PORT,
-});
 
-client.on('connect', () => {
-    console.log('Database connection');
-})
+};
 
-client.on('end', () => {
-    console.log('connction end');
-})
+const client = new Client(config);
 
-module.exports = client;
+module.exports = {
+
+  client,
+};
