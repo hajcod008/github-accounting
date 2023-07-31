@@ -1,4 +1,4 @@
-  const  client = require('../../../utils/initializer');
+  const  client = require('../../../config/initializer');
  
   
   

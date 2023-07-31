@@ -3,7 +3,7 @@ const uuid = require('uuid');
 const { registerSchema, loginSchema } = require('../../../utils/schema');
 const {validate } =require('../../../utils/validator');
 const bcrypt = require('bcryptjs');
-const repository = require('../../../utils/initializer');
+const repository = require('../../../config/initializer');
 //const { checkAccess } =require('../../../utils/accessControl');
 const { config } = require('dotenv');
 
