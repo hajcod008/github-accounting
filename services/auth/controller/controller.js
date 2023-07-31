@@ -19,7 +19,7 @@ const { config } = require('dotenv');
             insertDate:Date.now() 
         }
         const result = await bl.register(inputData);
-        console.log(inputData);
+        console.log('7777777777777777 :>> ',inputData);
         res.send(result);
     } catch (err) {
         console.log(err);
@@ -41,10 +41,10 @@ async function login(req, res) {
             username: req.body.username,
             password: req.body.password  
         }
-        //console.log(inputData);
         await validate(inputData, loginSchema)
         console.log('44444444444444444 :>> ', req.body);
         let result = await bl.login(inputData);
+        console.log('555555555555 :>> ',inputData);
         res.status(200).send(result);
     } catch (err) {
         const status = err.status || 400;

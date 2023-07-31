@@ -2,6 +2,7 @@ const repository = require('../repository/repository');
 const genrate = require('../../../utils/generate');
 const bcrypt = require('bcryptjs');
 const { query } = require('express');
+const { Console } = require('winston/lib/winston/transports');
 
 //*hash password 
 
@@ -27,7 +28,6 @@ async function register(inputData){
 //* Comparison username and password and token
 const login = async(inputData) => {
     try {
-        console.log(userData);
         const userData = await repository.findUser({username: inputData.username});
         if (!userData) {
             throw{

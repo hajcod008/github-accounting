@@ -10,7 +10,7 @@
   try {
 console.log(inputData);
 let insertQuery =`insert into users1(id, username, password,insert_date)
-   values(${3},'${inputData.username}','${inputData.password}',${inputData.insertDate})`
+   values(${5},'${inputData.username}','${inputData.password}',${inputData.insertDate})`
    console.log(insertQuery);
    const result = await client.query(insertQuery);
 
@@ -23,12 +23,13 @@ client.end()
  }
  
 
-//* get user for databases
+// //* get user for databases
 
 const findUser = async(inputData) =>{ 
   try {
-    console.log(user);
+ 
     const user = ({username: inputData.username})
+    console.log('66666666666 :>> ', user);
     if(!user){
       throw{
         massage:'user not found',
@@ -36,8 +37,8 @@ const findUser = async(inputData) =>{
 
       }
     }
-    console.log('3333333333333333333333333 :>> ', `SELECT username FROM users1 where username = ${inputData.username}`);
-    client.query(`SELECT username FROM users1 where username = ${inputData.username}`, (err,result)=>{
+    //console.log('3333333333333333333333333 :>> ', `SELECT username FROM users1 WHERE username = ${inputData.username}`);
+    client.query(`SELECT username FROM users1 WHERE username = ${inputData.username}`, (err,result)=>{
       if(err) console.log('1111111111111 :>> ', err);
       else{
         console.log('22222222222222 :>> ', result);
@@ -51,7 +52,7 @@ const findUser = async(inputData) =>{
   }
 }
 
-   module.exports =  {saveUser,findUser}
+   module.exports =  {saveUser, findUser}
 
 
 
