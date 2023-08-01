@@ -35,8 +35,10 @@ const { config } = require('dotenv');
     //     }
     // }
     inputData.password = await bcrypt.hash(inputData.password, 10);
-    await repository.saveUser(inputData);
+    await repository.saveUser(inputData ,res);
+    console.log("00000")
     delete inputData._id;
+    
     return {
         message: 'اطلاعات با موفقیت ثبت شد',
         result: inputData
@@ -45,7 +47,7 @@ const { config } = require('dotenv');
         console.log(err);
         err.status = err.status || 500;
         res.status(err.status).send({
-            error: err.error || { message:'مشکلی برای سرور رخ داده است لطفا بهدا مراجعه فرمایید '}
+            error: err.error || { message:'مشکلی برای سرور رخ داده است لطفا بعدا مراجعه فرمایید '}
         });
 
     }
