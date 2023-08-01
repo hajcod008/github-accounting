@@ -6,15 +6,15 @@ dotEnv.config({ path: "./config/config.env" });
 
 const config = {
 
-    user: process.env.DB_USER,
+  user: process.env.DB_USER,
 
-    host: process.env.DB_HOST,
+  host: process.env.DB_HOST,
 
-    database: process.env.DB_NAME,
+  database: process.env.DB_NAME,
 
-    password: process.env.DB_PASSWORD,
+  password: process.env.DB_PASSWORD,
 
-    port: process.env.DB_PORT,
+  port: process.env.DB_PORT,
 
 };
 
