@@ -8,7 +8,7 @@ const creatusert = async () => {
         fullname VARCHAR(100) NOT NULL,
         username VARCHAR(100) NOT NULL UNIQUE,
         password VARCHAR(100) NOT NULL,
-        insert_date DATE NOT NULL
+        insert_date BIGINT NOT NULL
       )
       
     `;

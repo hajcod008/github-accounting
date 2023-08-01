@@ -21,6 +21,7 @@ const { config } = require('dotenv');
             username: body.username,
             password: body.password,
             insertDate:Date.now() 
+
         }
         console.log('333333333333333 :>> ', inputData);         
     //     const user = await repository.findUser({ username: inputData.username });
