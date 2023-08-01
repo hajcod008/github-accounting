@@ -1,4 +1,4 @@
-  const  client = require('../../../config/initializer');
+  const  {client} = require('../../../config/initializer');
  
   
   
@@ -9,10 +9,22 @@
 
   try {
 console.log(inputData);
-let insertQuery =`insert into users(id, username, password,insert_date)
-   values(${4},'${inputData.username}','${inputData.password}',${inputData.insertDate})`
-   console.log(insertQuery);
-   const result = await client.query(insertQuery);
+let insertQuery = async ()=> {
+  try {
+    const query =`insert into 
+    users(id,fullname, username, password,insert_date)
+    values(${4},'${inputData.fullname}','${inputData.username}','${inputData.password}',${inputData.insertDate})`
+    await client.query(query);
+    console.log('user insert successfully');
+  
+  } catch (err) {
+    console.error('Error while iserting user:', err);
+  }
+}
+
+insertQuery();
+  //  console.log(insertQuery);
+  //  const result = await client.query(insertQuery);
 
 
 console.log(result.rows);

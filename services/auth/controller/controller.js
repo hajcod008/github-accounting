@@ -1,6 +1,7 @@
 
 const uuid = require('uuid');
 const { schema } = require('../../../models/secure/uservalidasion');
+require('../../../models/schema')
 const {validate } =require('../../../utils/validator');
 const bcrypt = require('bcryptjs');
 const repository = require('../repository/repository');
@@ -11,7 +12,7 @@ const { config } = require('dotenv');
 //*register user
   async function register(req, res){
     try {
-        const {body} = req;
+        const {body}= req;
         console.log('22222222222222 :>> ',body); 
         await validate(body,schema);
         const inputData = {
