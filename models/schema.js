@@ -7,8 +7,10 @@ const creatusert = async () => {
         id SERIAL PRIMARY KEY,
         fullname VARCHAR(100) NOT NULL,
         username VARCHAR(100) NOT NULL UNIQUE,
-        password VARCHAR(100) NOT NULL
+        password VARCHAR(100) NOT NULL,
+        insert_date DATE NOT NULL
       )
+      
     `;
     await client.query(query);
     console.log('Table created successfully');
