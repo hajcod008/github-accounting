@@ -1,32 +1,20 @@
-const {client} = require ('../config/initializer')
+const { client } = require('../config/initializer');
 
-client.connect()
-
-.then(() => {
-
+const creatusert = async () => {
+  try {
     const query = `
-
       CREATE TABLE IF NOT EXISTS users (
-
         id SERIAL PRIMARY KEY,
-
         fullname VARCHAR(100) NOT NULL,
-
-        email VARCHAR(100) NOT NULL UNIQUE,
-
-        password VARCHAR(10) NOT NULL UNIQUE
-
-      );
+        username VARCHAR(100) NOT NULL UNIQUE,
+        password VARCHAR(100) NOT NULL
+      )
     `;
+    await client.query(query);
+    console.log('Table created successfully');
+  } catch (error) {
+    console.error('Error while creating table:', error);
+  }
+};
 
-    return client.query(query);
-
-  })
-
-  .then(() => console.log('Table created successfully'))
-
-  .catch(err => console.log('Error while creating table:', err))
-  
-  .finally(() => client.end());
-
-  
+creatusert();

@@ -20,6 +20,14 @@ const config = {
 
 const client = new Client(config);
 
+client.connect()
+  .then(() => {
+    console.log('Connected to database');
+  })
+  .catch(err => {
+    console.error('Error connecting to database', err.stack);
+  });
+
 module.exports = {
 
   client,
