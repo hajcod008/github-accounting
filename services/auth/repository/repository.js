@@ -37,7 +37,7 @@ const findUser = async(inputData) =>{
 
       }
     }
-    //console.log('3333333333333333333333333 :>> ', `SELECT username FROM users1 WHERE username = ${inputData.username}`);
+    console.log('3333333333333333333333333 :>> ', `SELECT username FROM users1 WHERE username = ${inputData.username}`);
     client.query(`SELECT username FROM users1 WHERE username = ${inputData.username}`, (err,result)=>{
       if(err) console.log('1111111111111 :>> ', err);
       else{
@@ -58,18 +58,6 @@ const findUser = async(inputData) =>{
 
 
 
-
-    // console.log(inputData);
-    // const result = await client.query(`SELECT * FROM users1 WHERE username = ${inputData.params.username}`)
-    // if (result.rows.length === 0) {
-    //   return res.status(401).send('Invalid username or password');
-    //  }
-    // const users = result.rows[0];
-    // return{ 
-    //   status:200,
-    //   result:{
-    //     user
-    //   }
 
    
 

@@ -37,7 +37,7 @@ const login = async(inputData) => {
         }
         const ispasswordcorrect = await bcrypt.compare(inputData.password,userData.password);
         if(ispasswordcorrect) {
-           // const accessToken = generate.access(userData.id);
+            const accessToken = genrate.access(userData.id);
           return{
             status:200,
             data: {
@@ -45,7 +45,7 @@ const login = async(inputData) => {
                 result: {
             
                     userData,
-                   // accessToken
+                    accessToken
                 }
 
             }
