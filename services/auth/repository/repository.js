@@ -9,7 +9,7 @@
 
   try {
 console.log(inputData);
-let insertQuery =`insert into users1(id, username, password,insert_date)
+let insertQuery =`insert into users(id, username, password,insert_date)
    values(${4},'${inputData.username}','${inputData.password}',${inputData.insertDate})`
    console.log(insertQuery);
    const result = await client.query(insertQuery);
@@ -32,7 +32,7 @@ client.end()
 async function findUser(query) {
   try {
     console.log(query);
-      const user =  await client.query(  `SELECT * FROM users1 WHERE = 'username' `,[username]).findOne(query, { projection: { _id: 4 } });
+      const user =  await client.query(  `SELECT * FROM users WHERE = 'username' `,[username]).findOne(query, { projection: { _id: 4 } });
       return user;
   } catch (err) {
       throw {
