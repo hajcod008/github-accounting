@@ -2,6 +2,7 @@
 const uuid = require('uuid');
 const { schema } = require('../../../models/secure/uservalidasion');
 const {validate } =require('../../../utils/validator');
+require('../../../models/schema');
 const bcrypt = require('bcryptjs');
 const repository = require('../repository/repository');
 const genrate = require('../../../utils/generate')
