@@ -1,14 +1,20 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
-const client = require('./utils/initializer');
-const dotenv = require('dotenv').config({ path: __dirname + '/.env' });
-const app = express();
+const path =require('path');
+const dotEnv = require("dotenv");
 const morgan = require('morgan');
 const fs = require('fs');
-const bodyParser = require('body-parser');
-const serviceNames = fs.readdirSync('./services')
+const app = express();
+
+const serviceNames = fs.readdirSync('./controller')
+const client = require('./config/connDB');
+dotEnv.config({ path: "./config/config.env" });
+require('./model/users')
+
+
 app.use(morgan('dev'));
-const path =require('path');
+
 app.use(express.json({ limit:'50mb' }));
 
 
@@ -20,7 +26,7 @@ app.use(cors());
 
 //* Management ruter
 serviceNames.forEach(serviceName => {
-    const service = require(`./services/${serviceName}/routes.js`)
+    const service = require(`./routes/routes`)
 
     app.use('/api', service)
 });
@@ -28,14 +34,14 @@ serviceNames.forEach(serviceName => {
 
 //*env
 
-if (dotenv.error) {
-    throw dotenv.error;
-}
+// if (dotenv.error) {
+//     throw dotenv.error;
+// }
 
 
 
 //*connect to database
-client.connect();
+// client.connect();
 
 
 

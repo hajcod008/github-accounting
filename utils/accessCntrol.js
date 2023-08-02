@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
- const userRepository = require('../services/auth/repository/repository');
+ const userRepository = require('../controller/repository');
   
 
- const  Client = require('./../utils/initializer');
+ const  Client = require('../config/connDB');
  //const { promisify } = require('utils');
 
 
